@@ -5,4 +5,5 @@ app_name = 'events'
 
 urlpatterns = [
     path('list/', views.event_list, name='list'),
+    path("create/", views.event_create, name="create"),
 ]
