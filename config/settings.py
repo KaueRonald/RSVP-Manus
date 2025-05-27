@@ -95,5 +95,5 @@ STATICFILES_DIRS  = [ BASE_DIR / 'static' ]
 
 # ─── Configurações de Login ───────────────────────────────────────────────────
 LOGIN_URL          = '/users/login/'
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/events/list'
 LOGOUT_REDIRECT_URL= '/users/login/'

@@ -36,22 +36,17 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
             {% if user.is_authenticated %}
-            <li class="nav-item">
-              <form
-                action="{% url 'users:logout' %}"
-                method="post"
-                style="display: inline"
-              >
-                {% csrf_token %}
-                <button type="submit" class="nav-link btn btn-link">
-                  Sair
-                </button>
-              </form>
-            </li>
+            <a href="{% url 'events:list' %}">Eventos</a>
+            <form
+              action="{% url 'users:logout' %}"
+              method="post"
+              style="display: inline"
+            >
+              {% csrf_token %}
+              <button type="submit" class="nav-link btn btn-link">Sair</button>
+            </form>
             {% else %}
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'users:login' %}">Login</a>
-            </li>
+            <a href="{% url 'users:login' %}">Login</a>
             {% endif %}
           </ul>
         </div>
