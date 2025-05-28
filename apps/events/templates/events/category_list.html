@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Categorias{% endblock %}
+
+{% block content %}
+  <h1>Categorias</h1>
+  <a href="{% url 'events:category_create' %}" class="btn btn-primary mb-3">+ Nova Categoria</a>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th style="width:150px">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for cat in categories %}
+        <tr>
+          <td>{{ cat.name }}</td>
+          <td>
+            <a href="{% url 'events:category_update' cat.id %}" class="btn btn-sm btn-secondary">Editar</a>
+            <a href="{% url 'events:category_delete' cat.id %}" class="btn btn-sm btn-danger">Excluir</a>
+          </td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="2">Nenhuma categoria cadastrada.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
