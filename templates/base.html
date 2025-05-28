@@ -5,6 +5,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{% block title %}RSVP ERP{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'login/css/login.css' %}" />
+    <!-- CSS customizado (opcional) -->
+    <link href="{% static 'home/css/home.css' %}" rel="stylesheet" />
 
     <!-- Bootstrap CSS -->
     <link
@@ -13,11 +16,9 @@
       integrity="sha384-…"
       crossorigin="anonymous"
     />
-
-    <!-- CSS customizado (opcional) -->
-    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
   </head>
   <body>
+    {% if user.is_authenticated %}
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
       <div class="container">
@@ -52,6 +53,7 @@
         </div>
       </div>
     </nav>
+    {% endif %}
 
     <!-- Conteúdo principal -->
     <div class="container">
