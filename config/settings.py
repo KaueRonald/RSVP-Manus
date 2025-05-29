@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     # seus apps
     'apps.users',
     'apps.events',
+    'apps.guests',
     # …
 ]
 

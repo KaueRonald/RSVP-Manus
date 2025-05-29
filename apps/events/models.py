@@ -2,7 +2,13 @@ from django.db import models
 from django.core.exceptions import ValidationError
 from django.utils import timezone
 
+from apps.guests.models import Category, GuestGroup
+
 class Event(models.Model):
+
+    categories = models.ManyToManyField(Category, blank=True)
+    guest_groups = models.ManyToManyField(GuestGroup, blank=True)
+    
     EVENT_TYPES = [
         ("CONF", "Conferência"),
         ("MEET", "Encontro"),
