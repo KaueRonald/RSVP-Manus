@@ -3,6 +3,9 @@ from django.core.exceptions import ValidationError
 from django.utils import timezone
 
 class Event(models.Model):
+
+
+    
     EVENT_TYPES = [
         ("CONF", "Conferência"),
         ("MEET", "Encontro"),
@@ -25,3 +28,22 @@ class Event(models.Model):
 
     def __str__(self):
         return f"{self.name} @ {self.date:%Y-%m-%d %H:%M}"
+
+class Category(models.Model):
+    event = models.ForeignKey(
+        'events.Event', on_delete=models.CASCADE,
+        related_name='categories',
+        verbose_name="Evento"
+    )
+    name  = models.CharField(max_length=100, unique=True)
+    # …
+
+class GuestGroup(models.Model):
+    event    = models.ForeignKey(
+        'events.Event', on_delete=models.CASCADE,
+        related_name='guest_groups',
+        verbose_name="Evento"
+    )
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='groups')
+    name     = models.CharField(max_length=100, unique=True)
+    # …

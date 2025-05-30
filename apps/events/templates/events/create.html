@@ -1,9 +1,55 @@
 {% extends "base.html" %}
 {% block content %}
-  <h1>Cadastrar Evento</h1>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button class="btn btn-success">Salvar</button>
-  </form>
+<div class="container2">
+  <div >
+    <h1>Cadastrar Evento</h1>
+    <form method="post" class="login-form">
+      {% csrf_token %}
+
+      <!-- Nome -->
+      <div class="floating-label-group">
+        <label for="{{ form.name.id_for_label }}" class="floating-label">Nome do Evento</label>
+        {{ form.name }}
+        {{ form.name.errors }}
+      </div>
+
+      <!-- Descrição -->
+      <div class="floating-label-group">
+        <label for="{{ form.description.id_for_label }}" class="floating-label">Descrição</label>
+        {{ form.description }}
+        {{ form.description.errors }}
+      </div>
+
+      <!-- Local -->
+      <div class="floating-label-group">
+        <label for="{{ form.location.id_for_label }}" class="floating-label">Local</label>
+        {{ form.location }}
+        {{ form.location.errors }}
+      </div>
+
+      <!-- Data e Hora -->
+      <div class="floating-label-group">
+        <label for="{{ form.date.id_for_label }}" class="floating-label">Data e Hora</label>
+        {{ form.date }}
+        {{ form.date.errors }}
+      </div>
+
+      <!-- Capacidade -->
+      <div class="floating-label-group">
+        <label for="{{ form.capacity.id_for_label }}" class="floating-label">Capacidade</label>
+        {{ form.capacity }}
+        {{ form.capacity.errors }}
+      </div>
+
+      <!-- Tipo -->
+      <div class="floating-label-group">
+        <label for="{{ form.type.id_for_label }}" class="floating-label">Tipo</label>
+        {{ form.type }}
+        {{ form.type.errors }}
+      </div>
+
+      <button type="submit" class="login-button">Salvar</button>
+    </form>
+  </div>
+</div>
 {% endblock %}
