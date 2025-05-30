@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Grupos de Convidados{% endblock %}
+
+{% block content %}
+  <h1>Grupos de Convidados</h1>
+  <a href="{% url 'events:group_create' %}" class="btn btn-primary mb-3">+ Novo Grupo</a>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Categoria</th>
+        <th style="width:150px">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for grp in groups %}
+        <tr>
+          <td>{{ grp.name }}</td>
+          <td>{{ grp.category.name }}</td>
+          <td>
+            <a href="{% url 'events:group_update' grp.id %}" class="btn btn-sm btn-secondary">Editar</a>
+            <a href="{% url 'events:group_delete' grp.id %}" class="btn btn-sm btn-danger">Excluir</a>
+          </td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="3">Nenhum grupo cadastrado.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

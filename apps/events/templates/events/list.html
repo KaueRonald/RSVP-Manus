@@ -1,12 +1,13 @@
-{% extends "base.html" %}
-{% block content %}
-  <h1>Meus Eventos</h1>
-  <p><a href="{% url 'events:create' %}" class="btn btn-primary">Novo evento</a></p>
-  <ul>
-    {% for ev in events %}
-      <li>{{ ev.name }} – {{ ev.date }}</li>
-    {% empty %}
-      <li>Nenhum evento cadastrado ainda.</li>
-    {% endfor %}
-  </ul>
+{% extends "base.html" %} {% block content %}
+<h1>Meus Eventos</h1>
+<p>
+  <a href="{% url 'events:create' %}" class="btn btn-primary">Novo evento</a>
+</p>
+<ul>
+  {% for ev in events %}
+  <li>{{ ev.name }} – {{ ev.date }}</li>
+  {% empty %}
+  <li>Nenhum evento cadastrado ainda.</li>
+  {% endfor %}
+</ul>
 {% endblock %}

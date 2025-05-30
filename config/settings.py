@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     # seus apps
     'apps.users',
     'apps.events',
+    'apps.guests',
     # …
 ]
 
@@ -46,7 +47,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND' : 'django.template.backends.django.DjangoTemplates',
-        'DIRS'    : [ BASE_DIR / 'templates' ],
+        'DIRS'    : [ os.path.join (BASE_DIR / 'templates')],
         'APP_DIRS': True,
         'OPTIONS' : {
             'context_processors': [
@@ -91,7 +92,7 @@ USE_TZ        = True
 
 # ─── Arquivos estáticos ───────────────────────────────────────────────────────
 STATIC_URL        = '/static/'
-STATICFILES_DIRS  = [ BASE_DIR / 'static' ]
+STATICFILES_DIRS  = [os.path.join(BASE_DIR, 'static') ]
 
 # ─── Configurações de Login ───────────────────────────────────────────────────
 LOGIN_URL          = '/users/login/'

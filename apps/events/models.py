@@ -2,9 +2,9 @@ from django.db import models
 from django.core.exceptions import ValidationError
 from django.utils import timezone
 
+from apps.guests.models import Category, GuestGroup
+
 class Event(models.Model):
-
-
     
     EVENT_TYPES = [
         ("CONF", "Conferência"),
