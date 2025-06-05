@@ -1,0 +1,32 @@
+# Lista de Tarefas - Ajustes RSVP Django
+
+- [X] **Análise:** Analisar estrutura do projeto (models, views, urls, templates).
+- [X] **Planejamento:** Definir as alterações necessárias.
+- [ ] **Implementação - Evento Detalhe:**
+    - [X] Criar rota `events/evento/<int:event_id>/` em `events/urls.py`.
+    - [X] Criar view `event_detail` em `events/views.py` para buscar evento, categorias e grupos relacionados.
+    - [X] Criar template `events/event_detail.html` para exibir detalhes do evento, lista de categorias e lista de grupos.
+    - [X] Modificar `events/list.html` para adicionar link para a página de detalhes de cada evento.
+- [ ] **Implementação - Categorias por Evento:**
+    - [X] Criar rota `events/evento/<int:event_id>/categories/create/`.
+    - [X] Criar view `event_category_create` para lidar com a criação de categoria associada ao evento.
+    - [X] Modificar `CategoryForm` (ou criar um novo) se necessário.
+    - [X] Adicionar botão/link em `event_detail.html` para criar categoria.
+    - [X] Garantir que `event_detail.html` liste apenas categorias do evento atual.
+- [ ] **Implementação - Grupos por Evento:**
+    - [X] Criar rota `events/evento/<int:event_id>/groups/create/`.
+    - [X] Criar view `event_group_create` para lidar com a criação de grupo associado ao evento.
+    - [X] Modificar `GuestGroupForm` para filtrar categorias pelo evento atual.
+    - [X] Adicionar botão/link em `event_detail.html` para criar grupo.
+    - [X] Garantir que `event_detail.html` liste apenas grupos do evento atual.
+- [ ] **Refatoração (Opcional):** Avaliar e potencialmente remover/ajustar views/urls globais de Categoria/Grupo (`category_list`, `group_list`, etc.).
+- [ ] **Banco de Dados:**
+    - [X] Verificar necessidade de remover modelos duplicados em `apps/guests`. (Identificado: Sim, remover Category e GuestGroup de `apps/guests`)
+    - [X] Gerar e aplicar migrações (`makemigrations`, `migrate`).
+- [ ] **Testes:**
+    - [X] Configurar ambiente (instalar dependências, configurar DB - **precisa de info do usuário sobre MySQL**).
+    - [X] Testar fluxo completo: listar -> detalhar -> criar categoria -> criar grupo.
+- [ ] **Entrega:**
+    - [X] Preparar código final.
+    - [X] Documentar passos para execução local.
+    - [X] Enviar código e documentação para o usuário.
