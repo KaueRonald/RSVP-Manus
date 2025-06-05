@@ -1,0 +1,87 @@
+{% extends 'base.html' %} {# Assuming a base template exists #}
+
+{% block title %}Detalhes do Evento: {{ event.name }}{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>{{ event.name }}</h1>
+    <hr>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            Detalhes do Evento
+        </div>
+        <div class="card-body">
+            <p><strong>Descrição:</strong> {{ event.description|default:"N/A" }}</p>
+            <p><strong>Local:</strong> {{ event.location }}</p>
+            <p><strong>Data e Hora:</strong> {{ event.date|date:"d/m/Y H:i" }}</p>
+            <p><strong>Capacidade:</strong> {{ event.capacity }}</p>
+            <p><strong>Tipo:</strong> {{ event.get_type_display }}</p>
+            {# Add edit/delete buttons for the event itself if needed #}
+            {# <a href="#" class="btn btn-sm btn-secondary">Editar Evento</a> #}
+        </div>
+    </div>
+
+    <div class="row">
+        {# Categories Section #}
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    Categorias de Convidados
+                    <a href="{% url 'events:event_category_create' event_id=event.id %}" class="btn btn-sm btn-success">+ Nova Categoria</a>
+                </div>
+                <ul class="list-group list-group-flush">
+                    {% for category in categories %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            {{ category.name }}
+                            <span>
+                                {# Add edit/delete links for category if needed #}
+                                {# <a href="{% url 'events:category_update' pk=category.id %}" class="btn btn-sm btn-outline-primary">Editar</a> #}
+                                {# <form action="{% url 'events:category_delete' pk=category.id %}" method="post" style="display: inline;">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-sm btn-outline-danger">Excluir</button>
+                                </form> #}
+                            </span>
+                        </li>
+                    {% empty %}
+                        <li class="list-group-item">Nenhuma categoria cadastrada para este evento.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        {# Guest Groups Section #}
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    Grupos de Convidados
+                    <a href="{% url 'events:event_group_create' event_id=event.id %}" class="btn btn-sm btn-success">+ Novo Grupo</a>
+                </div>
+                <ul class="list-group list-group-flush">
+                    {% for group in guest_groups %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            {{ group.name }} ({{ group.category.name }})
+                             <span>
+                                {# Add edit/delete links for group if needed #}
+                                {# <a href="{% url 'events:group_update' pk=group.id %}" class="btn btn-sm btn-outline-primary">Editar</a> #}
+                                {# <form action="{% url 'events:group_delete' pk=group.id %}" method="post" style="display: inline;">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-sm btn-outline-danger">Excluir</button>
+                                </form> #}
+                            </span>
+                        </li>
+                    {% empty %}
+                        <li class="list-group-item">Nenhum grupo cadastrado para este evento.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <a href="{% url 'events:list' %}" class="btn btn-secondary">Voltar para Lista de Eventos</a>
+    </div>
+
+</div>
+{% endblock %}
+

@@ -1,13 +1,29 @@
-{% extends "base.html" %} {% block content %}
-<h1>Meus Eventos</h1>
-<p>
-  <a href="{% url 'events:create' %}" class="btn btn-primary">Novo evento</a>
-</p>
-<ul>
-  {% for ev in events %}
-  <li>{{ ev.name }} – {{ ev.date }}</li>
-  {% empty %}
-  <li>Nenhum evento cadastrado ainda.</li>
-  {% endfor %}
-</ul>
+{% extends "base.html" %} 
+
+{% block title %}Meus Eventos{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Meus Eventos</h1>
+    <p>
+      <a href="{% url 'events:create' %}" class="btn btn-primary">Novo evento</a>
+    </p>
+    
+    {% if events %}
+    <ul class="list-group">
+      {% for ev in events %}
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+          <a href="{% url 'events:detail' event_id=ev.id %}">{{ ev.name }}</a> 
+          <span>{{ ev.date|date:"d/m/Y H:i" }}</span>
+          {# Add other info or actions if needed #}
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <div class="alert alert-info" role="alert">
+        Nenhum evento cadastrado ainda.
+    </div>
+    {% endif %}
+</div>
 {% endblock %}
+

@@ -11,7 +11,7 @@ load_dotenv(BASE_DIR / '.env')
 # ─── Chave e Debug ────────────────────────────────────────────────────────────
 SECRET_KEY     = os.getenv('SECRET_KEY')
 DEBUG          = os.getenv('DEBUG', 'False') == 'True'
-ALLOWED_HOSTS  = []
+ALLOWED_HOSTS  = ['8000-i6u0yiqwfssgg4knurhr4-49befd99.manusvm.computer', 'localhost', '127.0.0.1']
 
 # ─── Apps instaladas ──────────────────────────────────────────────────────────
 INSTALLED_APPS = [
@@ -98,3 +98,8 @@ STATICFILES_DIRS  = [os.path.join(BASE_DIR, 'static') ]
 LOGIN_URL          = '/users/login/'
 LOGIN_REDIRECT_URL = '/events/list'
 LOGOUT_REDIRECT_URL= '/users/login/'
+
+
+# Adicionado para permitir POST de domínios externos durante testes
+CSRF_TRUSTED_ORIGINS = ["https://8000-i6u0yiqwfssgg4knurhr4-49befd99.manusvm.computer"]
+
